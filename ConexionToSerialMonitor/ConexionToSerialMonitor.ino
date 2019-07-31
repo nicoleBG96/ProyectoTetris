@@ -344,10 +344,6 @@ void loop() {
       if (figura->puedeBajar(x, y))
       {
         figura->bajar(x, y);
-        Serial.print("x:");
-        Serial.print(x);
-        Serial.print("y:");
-        Serial.print(y);
       }
     }
     if (input == 'a') {
