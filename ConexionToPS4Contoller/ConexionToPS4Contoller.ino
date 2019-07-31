@@ -66,9 +66,6 @@ bool Figura1::puedeBajar(int x, int y)
 }
 bool Figura1::puedeGirar(int x, int y)
 {
-  if ( y > TAM_F - 3) {
-    return false;
-  }
   if (tetris[y][x + 2] == 1)
   {
     return false;
@@ -97,7 +94,7 @@ bool Figura1::puedeIrDer(int x, int y)
 }
 bool Figura1::puedeIrIzq(int x, int y)
 {
-  if (x == 0)
+  if (x < 1)
   {
     return false;
   }
@@ -184,9 +181,6 @@ bool Figura2::puedeBajar(int x, int y)
 }
 bool Figura2::puedeGirar(int x, int y)
 {
-  if (x < 0) {
-    return false;
-  }
   if (tetris[y][x] == 1)
   {
     return false;
@@ -199,7 +193,7 @@ bool Figura2::puedeGirar(int x, int y)
 }
 bool Figura2::puedeIrDer(int x, int y)
 {
-  if (x > TAM_C - 3)
+  if (x > TAM_C - 4)
   {
     return false;
   }
@@ -210,8 +204,7 @@ bool Figura2::puedeIrDer(int x, int y)
   if (tetris[y + 1][x + 3] == 1)
   {
     return false;
-  }
-  if (tetris[y + 2][x + 2] == 1)
+  } if (tetris[y + 2][x + 2] == 1)
   {
     return false;
   }
@@ -344,22 +337,6 @@ void loop() {
       if (figura->puedeBajar(x, y))
       {
         figura->bajar(x, y);
-        Serial.print("x:");
-        Serial.print(x);
-        Serial.print("y:");
-        Serial.print(y);
-      }
-    }
-    if (input == 'a') {
-      if (figura->puedeIrIzq(x, y))
-      {
-        figura->irIzq(x, y);
-      }
-    }
-    if (input == 'd') {
-      if (figura->puedeIrDer(x, y))
-      {
-        figura->irDer(x, y);
       }
     }
     if (input == 'w') {
